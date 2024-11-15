@@ -70,9 +70,9 @@ The **Smarty Studio - Performance Improvements for WooCommerce** plugin is a lig
 
 ## Requirements
 
-- **WordPress Version**: 7.2 or higher
+- **WordPress Version**: 6.0 or higher
 - **PHP Version**: 7.4 or higher
-- **WooCommerce Version**: 6.0 or higher
+- **WooCommerce Version**: 7.0 or higher
 - **Tested Up To**:
   - WordPress: 6.3+
   - WooCommerce: 9.4+

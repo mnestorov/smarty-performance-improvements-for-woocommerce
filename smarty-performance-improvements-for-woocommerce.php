@@ -11,7 +11,7 @@
  * Text Domain:          smarty-performance-improvements
  * Requires at least:    6.0
  * Requires PHP:         7.4
- * WC requires at least: 6.0
+ * WC requires at least: 7.0
  * WC tested up to:      9.4
  * Requires Plugins:     woocommerce
  */
