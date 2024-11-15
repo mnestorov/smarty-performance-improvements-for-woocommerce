@@ -15,6 +15,7 @@
  * WC tested up to:      9.4
  */
 
+// If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;
 }
@@ -236,11 +237,13 @@ if (!function_exists('smarty_remove_dashboard_widgets')) {
     }
 }
 
-/**
- * Disable the setup widget.
- */
-function smarty_disable_setup_widget() {
-    remove_meta_box('wc_admin_dashboard_setup', 'dashboard', 'normal');
+if (!function_exists('smarty_disable_setup_widget')) {
+    /**
+     * Disable the setup widget.
+     */
+    function smarty_disable_setup_widget() {
+        remove_meta_box('wc_admin_dashboard_setup', 'dashboard', 'normal');
+    }
 }
 
 if (!function_exists('smarty_disable_woocommerce_widgets')) {
@@ -281,23 +284,27 @@ if (!function_exists('smarty_disable_woocommerce_com_notice')) {
     }
 }
 
-/**
- * Hide "Marketplace" and "My Subscriptions" submenus.
- */
-function smarty_hide_woocommerce_menus() {
-    remove_submenu_page('woocommerce', 'wc-addons');
-    remove_submenu_page('woocommerce', 'wc-addons&section=helper');
+if (!function_exists('smarty_hide_woocommerce_menus')) {
+    /**
+     * Hide "Marketplace" and "My Subscriptions" submenus.
+     */
+    function smarty_hide_woocommerce_menus() {
+        remove_submenu_page('woocommerce', 'wc-addons');
+        remove_submenu_page('woocommerce', 'wc-addons&section=helper');
+    }
 }
 
-/**
- * Disable WooCommerce Marketing Hub.
- */
-function smarty_disable_marketing_hub($features) {
-    $key = array_search('marketing', $features);
-    if ($key !== false) {
-        unset($features[$key]);
+if (!function_exists('smarty_disable_marketing_hub')) {
+    /**
+     * Disable WooCommerce Marketing Hub.
+     */
+    function smarty_disable_marketing_hub($features) {
+        $key = array_search('marketing', $features);
+        if ($key !== false) {
+            unset($features[$key]);
+        }
+        return $features;
     }
-    return $features;
 }
 
 if (!function_exists('smarty_disable_stripe_scripts')) {
@@ -314,23 +321,29 @@ if (!function_exists('smarty_disable_stripe_scripts')) {
     }
 }
 
-/**
- * Deregister unnecessary scripts.
- */
-function smarty_deregister_woocommerce_scripts() {
-    wp_dequeue_script('wc-password-strength-meter');
+if (!function_exists('smarty_deregister_woocommerce_scripts')) {
+    /**
+     * Deregister unnecessary scripts.
+     */
+    function smarty_deregister_woocommerce_scripts() {
+        wp_dequeue_script('wc-password-strength-meter');
+    }
 }
 
-/**
- * Increase CSV batch export limit.
- */
-function smarty_increase_csv_batch_limit() {
-    return 5000;
+if (!function_exists('smarty_increase_csv_batch_limit')) {
+    /**
+     * Increase CSV batch export limit.
+     */
+    function smarty_increase_csv_batch_limit() {
+        return 5000;
+    }
 }
 
-/**
- * Clear unused WooCommerce tracker cron job.
- */
-function smarty_clear_unused_cron_jobs() {
-    wp_clear_scheduled_hook('woocommerce_tracker_send_event');
+if (!function_exists('smarty_clear_unused_cron_jobs')) {
+    /**
+     * Clear unused WooCommerce tracker cron job.
+     */
+    function smarty_clear_unused_cron_jobs() {
+        wp_clear_scheduled_hook('woocommerce_tracker_send_event');
+    }
 }
